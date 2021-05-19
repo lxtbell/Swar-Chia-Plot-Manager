@@ -182,7 +182,7 @@ def get_running_plots(jobs, running_work):
         try:
             if 'plots' not in process.cmdline() or 'create' not in process.cmdline():
                 continue
-        except psutil.ZombieProcess:
+        except (psutil.ZombieProcess, psutil.AccessDenied):
             continue
         if process.parent():
             try:
